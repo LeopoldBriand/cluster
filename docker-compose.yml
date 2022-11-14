@@ -223,8 +223,8 @@ services:
   logstash:
     image: docker.elastic.co/logstash/logstash:${STACK_VERSION}
     volumes:
-      - ./:/config-dir
-    command: logstash -f /config-dir/logstash.conf
+      - ./config:/config-dir
+    command: logstash -f /config-dir/logstash_sncf.conf
     depends_on:
       es01:
         condition: service_healthy

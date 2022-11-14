@@ -1,3 +1,8 @@
+# 
+## How to run exemple
+
+First run the cluster : `docker-compose up -d es01 es02 es03 kibana` 
+
 Create index mapping:
 
 ```
@@ -90,3 +95,20 @@ PUT _ingest/pipeline/sncf-pipeline
     ]
 }
 ```
+
+
+Index types: 
+  - data_hot : Données disponibles
+  - data_warm : donnée en read_only
+  - data_cold : read_only et données plus lentes
+  - data_freeze : index fermés et réouvert sur demande(requete)
+
+## datastream 
+
+Le rollover se fait tous les x temps, modifiable avec : 
+```
+
+```
+
+Créer le data-stream à partir d'un template d'index.
+Créer une regle de retention de données dans Index Lifecycle policies, puis l'associer au template.
